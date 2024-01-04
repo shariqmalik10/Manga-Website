@@ -1,0 +1,19 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manga-div {
+    display: flex;
+    width: 50vw;
+    height: 50vw;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.manga-div > h2 {
+    align-self: center;
+}
