@@ -13,12 +13,22 @@
 <body>
     <div class="container">
         <div class="manga-div">
-            <h2>Manga Directory</h2>
+            <h2><a class="main-link" style="text-decoration:none" href="/">Manga Directory</a></h2>
             <form action="/search-result" class="d-flex" role="search" method="POST" >
                 <input class="form-control me-2" type="search" id="search" name="search" placeholder="Enter a manga/manhwa title" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
+
+
+        <% if (locals.content) { %>
+            <h2>Search Results</h2>
+            <div class="search-results">
+                <% for( let index = 0; index < content.length; index++ ) { %>
+                    <p><%= content[index] %></p>
+                <% } %>
+            </div>
+        <% } %>
     </div>
 </body>
 </html>

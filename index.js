@@ -16,15 +16,30 @@ app.get("/", (req, res) => {
 })
 
 //api call for when the user types in a manga title to search up 
-const baseURL = 'https://api.mangadex.org';
+const baseURL = 'https://api.jikan.moe/v4/manga';
 app.post('/search-result', async (req, res) => {
     const searchTitle = req.body.search;
-    const apiURL = `https://api.jikan.moe/v4/manga?q=${searchTitle}&limit=10`;
+    const apiURL = `${baseURL}?q=${searchTitle}&limit=3`;
     try {
         const result = await axios.get(apiURL);
-        console.log(JSON.stringify(result.data.data[0].title_english));
+
+        //testing to see different types of output. Some results will have only japanese titles so deal with em accordingly
+        var title = "";
+        var results = [];
+        for (let i=0; i<result.data.data.length; i++) {
+            if (result.data.data[i].title_english){
+                console.log(JSON.stringify(result.data.data[i].title_english));
+                results.push(JSON.stringify(result.data.data[i].title_english));
+                
+            }
+            else {
+                console.log(JSON.stringify(result.data.data[i].title_japanese));
+                results.push(JSON.stringify(result.data.data[i].title_japanese))
+            }
+        }
+        res.render("index.ejs", {content: results})
     } catch (error) {
-        console.log("Error in recieving response");
+        console.log(error);
     }
 
 })

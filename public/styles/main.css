@@ -4,12 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-direction: column;
 }
 
 .manga-div {
     display: flex;
     width: 50vw;
-    height: 50vw;
+    height: 25vw;
     flex-direction: column;
     justify-content: center;
 }
@@ -17,3 +19,16 @@
 .manga-div > h2 {
     align-self: center;
 }
+
+/* Change link styling */
+.main-link {
+    color: red;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
