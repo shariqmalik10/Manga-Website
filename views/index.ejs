@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/styles/main.css" />
     <!-- link for jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- added client side javascript -->
+    <!-- defer means it will run after the page has loaded -->
+    <script src="client.js" defer></script>
 </head>
 <body>
     <div id="main-container" class="container">
@@ -49,6 +52,7 @@
                             <div class="card-body">
                             <h5 class="card-title"><p><%= content[index]["title"] %></p></h5>
                             <p class="card-text"><%= content[index]["desc"] %></p>
+                            <a class="read-more">Read more</a>
                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                         </div>

@@ -6,6 +6,8 @@
     align-items: center;
 
     flex-direction: column;
+
+    margin-bottom: 20rem; 
 }
 
 .manga-div {
@@ -57,8 +59,18 @@
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
-
     margin-bottom: 20px;
-
+}
+    
+.card {
+    height: 42rem;
 }
 
+.card-text {
+    overflow: hidden;
+    max-height: 4lh;
+}
+
+.read-more{
+    text-decoration: none;
+}
