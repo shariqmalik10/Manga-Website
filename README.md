@@ -6,4 +6,4 @@ This is a website being created using HTML, CSS and Express to practice calling 
 
 Here are a few screenshots to showcase what the final website looks like  
 
-![Alt Screenshot 1]
+![Alt Screenshot 1]('https://github.com/shariqmalik10/Manga-Website/blob/main/public/images/Screenshot%201.png')
