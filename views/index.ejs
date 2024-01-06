@@ -11,17 +11,31 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="manga-div">
-            <h2><a class="main-link" style="text-decoration:none" href="/">Manga Directory</a></h2>
+    <div id="main-container" class="container">
+        <div id="result-container" class="manga-div">
+            <h2><a id="homelink-change" class="main-link" style="text-decoration:none" href="/">Manga Directory</a></h2>
             <form action="/search-result" class="d-flex" role="search" method="POST" >
                 <input class="form-control me-2" type="search" id="search" name="search" placeholder="Enter a manga/manhwa title" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
 
-
+        <!-- This section becomes visible only if api call is successful -->
         <% if (locals.content) { %>
+            <!-- adding classes to change styling accordingly -->
+            <script>
+                var mainDiv = document.getElementById('main-container');
+                mainDiv.classList.add('container-change')
+
+                var resultDiv = document.getElementById('result-container');
+                resultDiv.classList.add('styling-change');
+
+                var search = document.getElementById('search');
+                search.classList.add('searchbar-change');
+
+                var homelink = document.getElementById('homelink-change');
+                homelink.classList.add('homelink-change');
+            </script>
             <h2>Search Results</h2>
             <div class="search-results">
                 <% for( let index = 0; index < content.length; index++ ) { %>

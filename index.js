@@ -28,12 +28,12 @@ app.post('/search-result', async (req, res) => {
         var results = [];
         for (let i=0; i<result.data.data.length; i++) {
             if (result.data.data[i].title_english){
-                console.log(JSON.stringify(result.data.data[i].title_english));
+                // console.log(JSON.stringify(result.data.data[i].title_english));
                 results.push(JSON.stringify(result.data.data[i].title_english));
                 
             }
             else {
-                console.log(JSON.stringify(result.data.data[i].title_japanese));
+                // console.log(JSON.stringify(result.data.data[i].title_japanese));
                 results.push(JSON.stringify(result.data.data[i].title_japanese))
             }
         }

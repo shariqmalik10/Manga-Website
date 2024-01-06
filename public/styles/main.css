@@ -11,13 +11,38 @@
 .manga-div {
     display: flex;
     width: 50vw;
-    height: 25vw;
+    height: 25vh;
     flex-direction: column;
     justify-content: center;
 }
 
 .manga-div > h2 {
     align-self: center;
+}
+
+/* change the styling of the main home link and the search bar once their is a search triggered */
+
+/* styling change for the container holding the homelink and searchbar */
+.styling-change {
+    flex-direction: row;
+    justify-content: center;
+    width: 75vw;
+    gap: 50px;
+    height: 10vh;
+    
+    margin-bottom: 30px;
+}
+
+.container-change {
+    justify-content: start;
+}
+
+.searchbar-change {
+    width: 50vw;
+}
+
+.homelink-change {
+    font-size: 20px;
 }
 
 /* Change link styling */
