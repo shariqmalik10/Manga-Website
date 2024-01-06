@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Linking to css file -->
     <link rel="stylesheet" href="/styles/main.css" />
-
+    <!-- link for jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="main-container" class="container">
@@ -36,6 +37,7 @@
 
                     var homelink = document.getElementById('homelink-change');
                     homelink.classList.add('homelink-change');
+
                 </script>
 
                 <!-- Search Results -->
@@ -47,7 +49,7 @@
                             <div class="card-body">
                             <h5 class="card-title"><p><%= content[index]["title"] %></p></h5>
                             <p class="card-text"><%= content[index]["desc"] %></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                         </div>
                     <% } %>
@@ -56,8 +58,6 @@
                 <h2>No Result Found !</h2>
             <% } %>
         <% } %>
-            
-
     </div>
 </body>
 </html>

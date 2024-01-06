@@ -26,33 +26,21 @@ function resultObj(title, imgURL, desc) {
 const baseURL = 'https://api.jikan.moe/v4/manga';
 app.post('/search-result', async (req, res) => {
     const searchTitle = req.body.search;
-    const apiURL = `${baseURL}?q=${searchTitle}&limit=3`;
+    const apiURL = `${baseURL}?sfw&q=${searchTitle}`;
     try {
         const response = await axios.get(apiURL);
 
         //testing to see different types of output. Some results will have only japanese titles so deal with em accordingly
-        var title = "";
         var results = [];
         for (let i=0; i<response.data.data.length; i++) {
-            if (response.data.data[i].title_english){
+            //atm only displaying manga titles that are in english as the majority japanese titles do not have any info available 
+            if (response.data.data[i].title_english && response.data.data[i].background != null && results.length < 4){
                 //create a new object for the result and then push that to the array
                 var result = new resultObj(
                     JSON.stringify(response.data.data[i].title_english),
                     response.data.data[i].images.jpg.image_url,
                     JSON.stringify(response.data.data[i].background)
                 );
-
-                results.push(result);
-
-                console.log(result["imgURL"]);
-            }
-            else {
-                var result = new resultObj(
-                    JSON.stringify(response.data.data[i].title_japanese),
-                    response.data.data[i].images.jpg.image_url,
-                    JSON.stringify(response.data.data[i].background)
-                );
-
                 results.push(result);
             }
         }
@@ -60,7 +48,6 @@ app.post('/search-result', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 })
 
 
