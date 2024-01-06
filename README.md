@@ -12,6 +12,20 @@ Upon searching for a term:
 
 ![alt Screenshot 2](https://github.com/shariqmalik10/Manga-Website/blob/main/public/images/Screenshot%202.png)
 
+## How to host the website locally 
+
+### Step 1
+Clone the repo  
+
+### Step 2
+Go to the cloned repo through da terminal
+
+### Step 3
+Run the command ```npm install```. This will install all the dependecies
+
+### Step 4
+Run the command ```nodemon index.js``` to locally host the site
+
 ## Further Work to be done 
  - [ ] Add a 'read more/read less' in order to make it a more pleasant viewing experience
  - [ ] Add links to the results to redirect user to the website where they can read the manga
