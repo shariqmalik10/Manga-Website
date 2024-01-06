@@ -20,29 +20,44 @@
             </form>
         </div>
 
-        <!-- This section becomes visible only if api call is successful -->
+        <!-- This section becomes active and visible only if api call is successful -->
         <% if (locals.content) { %>
-            <!-- adding classes to change styling accordingly -->
-            <script>
-                var mainDiv = document.getElementById('main-container');
-                mainDiv.classList.add('container-change')
+            <% if (locals.content.length > 0) { %>
+                <!-- adding classes to change styling accordingly -->
+                <script>
+                    var mainDiv = document.getElementById('main-container');
+                    mainDiv.classList.add('container-change')
 
-                var resultDiv = document.getElementById('result-container');
-                resultDiv.classList.add('styling-change');
+                    var resultDiv = document.getElementById('result-container');
+                    resultDiv.classList.add('styling-change');
 
-                var search = document.getElementById('search');
-                search.classList.add('searchbar-change');
+                    var search = document.getElementById('search');
+                    search.classList.add('searchbar-change');
 
-                var homelink = document.getElementById('homelink-change');
-                homelink.classList.add('homelink-change');
-            </script>
-            <h2>Search Results</h2>
-            <div class="search-results">
-                <% for( let index = 0; index < content.length; index++ ) { %>
-                    <p><%= content[index] %></p>
-                <% } %>
-            </div>
+                    var homelink = document.getElementById('homelink-change');
+                    homelink.classList.add('homelink-change');
+                </script>
+
+                <!-- Search Results -->
+                <h2>Search Results</h2>
+                <div class="search-results">
+                    <% for( let index = 0; index < content.length; index++ ) { %>
+                        <div class="card" style="width: 18rem;">
+                            <img src=<%= content[index]["imgURL"] %> class="card-img-top" alt="Manga Cover" />
+                            <div class="card-body">
+                            <h5 class="card-title"><p><%= content[index]["title"] %></p></h5>
+                            <p class="card-text"><%= content[index]["desc"] %></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } else {%>
+                <h2>No Result Found !</h2>
+            <% } %>
         <% } %>
+            
+
     </div>
 </body>
 </html>

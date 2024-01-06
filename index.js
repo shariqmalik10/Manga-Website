@@ -15,26 +15,45 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
+//result object being created to ease the complexity of the data being pushed when the updated index.ejs is rendered
+function resultObj(title, imgURL, desc) {
+    this.title = title;
+    this.imgURL = imgURL;
+    this.desc = desc; 
+}
+
 //api call for when the user types in a manga title to search up 
 const baseURL = 'https://api.jikan.moe/v4/manga';
 app.post('/search-result', async (req, res) => {
     const searchTitle = req.body.search;
     const apiURL = `${baseURL}?q=${searchTitle}&limit=3`;
     try {
-        const result = await axios.get(apiURL);
+        const response = await axios.get(apiURL);
 
         //testing to see different types of output. Some results will have only japanese titles so deal with em accordingly
         var title = "";
         var results = [];
-        for (let i=0; i<result.data.data.length; i++) {
-            if (result.data.data[i].title_english){
-                // console.log(JSON.stringify(result.data.data[i].title_english));
-                results.push(JSON.stringify(result.data.data[i].title_english));
-                
+        for (let i=0; i<response.data.data.length; i++) {
+            if (response.data.data[i].title_english){
+                //create a new object for the result and then push that to the array
+                var result = new resultObj(
+                    JSON.stringify(response.data.data[i].title_english),
+                    response.data.data[i].images.jpg.image_url,
+                    JSON.stringify(response.data.data[i].background)
+                );
+
+                results.push(result);
+
+                console.log(result["imgURL"]);
             }
             else {
-                // console.log(JSON.stringify(result.data.data[i].title_japanese));
-                results.push(JSON.stringify(result.data.data[i].title_japanese))
+                var result = new resultObj(
+                    JSON.stringify(response.data.data[i].title_japanese),
+                    response.data.data[i].images.jpg.image_url,
+                    JSON.stringify(response.data.data[i].background)
+                );
+
+                results.push(result);
             }
         }
         res.render("index.ejs", {content: results})
